@@ -1,12 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Job
 
 # Create your views here.
+def basepage(request):
+    return render(request, 'jobs/base.html')
 
 def homepage(request):
-    return HttpResponse("Hello CST Team, you've reached Home Page of Jobs app")
-    #return render(request, 'jobs/home.html')
+    #return HttpResponse("Hello CST Team, you've reached Home Page of Jobs app")
+    jobs = Job.objects
+    return render(request, 'jobs/home.html', {'jobs':jobs})
 
 def contact(request):
-    return HttpResponse("Contact montrealcollege.ca for further info about the CST program")
+    return render(request, 'jobs/contact.html')
 
+def summary(request):
+    jobs = Job.objects
+    return render(request, 'jobs/summary.html', {'jobs':jobs})
+
+def detail(request, job_id):
+    job_detail = get_object_or_404(Job, pk=job_id)
+    return render(request, 'jobs/detail.html', {'job':job_detail})

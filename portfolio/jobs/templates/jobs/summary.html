@@ -1,0 +1,22 @@
+{% extends "jobs/home.html" %}
+{% block content %}
+<div class="bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for job in jobs.all %}
+      <div class="col position-static">
+        <a class="stretched-link" href="{% url 'detail' job.id %}"></a>
+        <div class="card shadow-sm">
+          <img class="card=img-top" src="{{job.image.url}}"></img>
+          <div class="card-body">
+            <p class="card-text">{{ job.summary | truncatechars:100}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "jobs/home.html" %}
+{% block content %}
+<div class="row">
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Job Details</h1>
+      <p class="lead text-muted">{{ job.summary | default:"I have created awesome-designs and experience for my
+        project
+        at university."}}</p>
+      <p class="lead text-muted">{{ job.summary | wordcount}}</p>
+      <img src="{{ job.image.url }}" height="300"></img>
+      <p><a href="{% url 'home' %}" class="btn btn-primary my-2">Back</a></p>
+    </div>
+  </section>
+</main>
+</div>
+
+{% endblock %}
