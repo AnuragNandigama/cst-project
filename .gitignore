@@ -1,0 +1,10 @@
+#Virtual Environment
+env/*
+
+#Visual Studio Code Settings
+.vscode/*
+
+#SQLite DB
+portfolio/db.sqlite3
+portfolio/*/__pycache__/*
+portfolio/jobs/migrations/__pycache__/*

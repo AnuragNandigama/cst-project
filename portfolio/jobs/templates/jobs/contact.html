@@ -1,0 +1,35 @@
+{% extends "jobs/home.html" %}
+
+{% block content %}
+<div class="container">
+    {% load widget_tweaks %}
+    <h1 class="text-center">This is contact page</h1>
+    <h3 class="text-center text-muted">{{ message }}</h3>
+    {% if created_student %}
+    <a href="{% url 'edit_user' created_student %}">Edit your info</a>
+    {% endif %}
+    <div class="row">
+        <div class="align-middle">
+            <form enctype="multipart/form-data" action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                {% for field in studentform %}
+                <div class="form-group">
+                    {{ field.errors }}
+                    {{ field.label_tag }}
+                    {% render_field field class="form-control" %}
+                </div>
+                {% endfor %}
+                <input type="submit" value="SubmitStudentProfile">
+            </form>
+        </div>        
+    </div>
+    <br><br>
+    Enroll another user/student?
+    <div class="row">
+        <form action="{% url 'blog' %}" method="GET">
+            {{ multiple_form }}
+            <input type="submit" value="Get User Info"> 
+        </form>
+    </div>
+
+    {% endblock %}
