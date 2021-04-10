@@ -1,0 +1,23 @@
+{% extends "jobs/home.html" %}
+{% block content %}
+<div class="bg-light">
+  <div class="container">
+      <h3 class="text-center">Registered Users</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for student in students.all %}
+      <div class="col position-static">
+          <a href="{% url 'edit_user' student.id %}"></a>
+        <div class="card shadow-sm">
+          <img class="card=img-top" src=" "></img>
+          <div class="card-body">
+            <p class="card-text">{{ student.user_name }}</p>
+            <p class="card-text">{{ student.user_college }}</p>
+            <p class="card-text">{{ student.user_profile }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

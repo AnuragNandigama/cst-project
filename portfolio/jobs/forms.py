@@ -21,7 +21,7 @@ class StudentDetailsForm(forms.ModelForm):
     class Meta:
         model = StudentDetails
         fields = ['user_name', 'user_college', 'user_profile']
-        labels = {'user_name': 'Name', 'user_college':'College'}
+        labels = {'user_name': 'Name', 'user_college':'College', 'user_profile': 'Profile'}
         widgets = {
             'user_name': forms.TextInput(
                 attrs={
@@ -31,10 +31,10 @@ class StudentDetailsForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control'
                     }),
-            'user_profile':forms.CheckboxSelectMultiple(
-                attrs={
-                    'class': 'form-control'
-                    })            
+            # 'user_profile':forms.CheckboxSelectMultiple(
+            #     attrs={
+            #         'class': 'form-check'
+            #         }),            
             }
         
 class MultipleUserInfoForm(forms.Form):

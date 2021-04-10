@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-#import jobs.views
+import jobs.views
 
 # path() -> function that takes 4 arguments
 # 1st arg -> route
@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 # optional args -> kwargs, name
 
 urlpatterns = [
-    #path('', jobs.views.homepage, name='homepage'),
+    path('', jobs.views.homepage, name='homepage'),
     path('jobs/', include('jobs.urls')),
     path('admin/', admin.site.urls),
 ]

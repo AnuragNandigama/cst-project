@@ -3,33 +3,49 @@
 {% block content %}
 <div class="container">
     {% load widget_tweaks %}
-    <h1 class="text-center">This is contact page</h1>
-    <h3 class="text-center text-muted">{{ message }}</h3>
+    <div class="row">
+        <h3 class="text-center">This is contact page</h1>
+    </div>    
     {% if created_student %}
     <a href="{% url 'edit_user' created_student %}">Edit your info</a>
     {% endif %}
+    <br>
     <div class="row">
-        <div class="align-middle">
+        <div class="col-6">
+            <h6>Enroll a single user/student?</h6>
             <form enctype="multipart/form-data" action="{% url 'contact' %}" method="POST">
                 {% csrf_token %}
                 {% for field in studentform %}
                 <div class="form-group">
                     {{ field.errors }}
-                    {{ field.label_tag }}
-                    {% render_field field class="form-control" %}
+                    <div class="row">
+                        <div class="col-2 mt-1">
+                            <span>{{ field.label_tag }}</span> 
+                        </div>  
+                        <div class="col-5 mt-1">
+                            <span>{% render_field field class="form-control" %}</span>
+                        </div> 
+                    </div>  
                 </div>
                 {% endfor %}
-                <input type="submit" value="SubmitStudentProfile">
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>                
             </form>
-        </div>        
+        </div> 
+        <div class="col-6">
+            <h6>Enroll another user/student?</h6>
+            <div class="row">
+                <form action="{% url 'blog' %}" method="GET">
+                    <div class="form-group">
+                        {{ multiple_form }}
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-secondary">More Users</button>
+                    </div>
+                     
+                </form>
+            </div>
+        </div>       
     </div>
-    <br><br>
-    Enroll another user/student?
-    <div class="row">
-        <form action="{% url 'blog' %}" method="GET">
-            {{ multiple_form }}
-            <input type="submit" value="Get User Info"> 
-        </form>
-    </div>
-
     {% endblock %}

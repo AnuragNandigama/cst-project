@@ -2,15 +2,15 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h3>Edit the student details</h3>
+        <h3>Delete the student details</h3>
         <div class="col-5">
-            <form enctype="multipart/form-data" action="{% url 'edit_user' user.id %}" method="post"">
+            <form enctype="multipart/form-data" action="{% url 'delete_user' user.id %}" method="post"">
                 {% csrf_token %}
                 <div class="form-group">
                    {{form}}
                 </div>
                 <div class="mt-4">
-                    <button type="submit" class="btn-secondary">Update</button>
+                    <button type="submit" class="btn-secondary">Delete</button>
                 </div>
             </form>
         </div>

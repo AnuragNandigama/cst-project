@@ -8,3 +8,5 @@ env/*
 portfolio/db.sqlite3
 portfolio/*/__pycache__/*
 portfolio/jobs/migrations/__pycache__/*
+portfolio/.coverage
+portfolio/htmlcov

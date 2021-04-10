@@ -1,8 +1,12 @@
 {% extends "jobs/home.html" %}
 {% block content%}
-<div class="text-center">
-    <h1>This is from Blog Page</h1>
-    <h3 class="text-center text-muted">{{ note }}</h3>
+<div class="container">
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>This is from Blog Page</h1>
+    </div>
+    <div class="col-5">
+        <h3 class="text-center text-muted">{{ note }}</h3>
     <form action="{% url 'blog' %}" method="POST">
         {% csrf_token %}
         {{ formset.management_form }}
@@ -15,5 +19,7 @@
 
         <input type="submit" value="Register User">
     </form>
+    </div>
+</div>
 </div>
 {% endblock %}
